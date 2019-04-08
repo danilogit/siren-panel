@@ -6,7 +6,7 @@
   "dataFormats": [],
 
   "info": {
-    "description": "Play sound for alerts",
+    "description": "Siren Panel is a plugin for Grafana wich allows you to play a sound when you have alerts.",
     "author": {
       "name": "Danilo Lima",
       "url": "https://danilo.cc"

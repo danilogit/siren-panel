@@ -1,9 +1,7 @@
-# Alert List Panel - Native plugin
+# Siren Panel
 
-This Alert List panel is **included** with Grafana.
-
-The Alert List panel allows you to display alerts on a dashboard. The list can be configured to show either the current state of your alerts or recent alert state changes. You can read more about alerts [here](http://docs.grafana.org/alerting/rules).
+The Siren Panel allows you to play sounds for alerts on a dashboard.
 
 Read more about it here:
 
-[http://docs.grafana.org/features/panels/alertlist/](http://docs.grafana.org/features/panels/alertlist/)
+[https://github.com/danilogit/siren-panel](https://github.com/danilogit/siren-panel)
