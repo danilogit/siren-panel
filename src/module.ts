@@ -56,7 +56,6 @@ class SirenPanel extends PanelCtrl {
   }
 
   isAlertInHistory(alert) {
-    console.log("history", this.alertHistory);
     return this.alertHistory.find(item => {
       if (item.newStateDate === alert.newStateDate && item.state === alert.state && item.panelId === alert.panelId) {
         return true;
