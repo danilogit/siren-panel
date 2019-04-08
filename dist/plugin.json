@@ -1,0 +1,19 @@
+{
+  "type": "panel",
+  "name": "Siren",
+  "id": "siren-panel",
+
+  "dataFormats": [],
+
+  "info": {
+    "description": "Play sound for alerts",
+    "author": {
+      "name": "Danilo Lima",
+      "url": "https://danilo.cc"
+    },
+    "logos": {
+      "small": "img/icn-siren-panel.svg",
+      "large": "img/icn-siren-panel.svg"
+    }
+  }
+}
