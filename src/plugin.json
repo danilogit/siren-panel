@@ -1,19 +1,28 @@
 {
   "type": "panel",
   "name": "Siren",
-  "id": "siren-panel",
+  "id": "danilogit-siren-panel",
 
   "dataFormats": [],
 
   "info": {
-    "description": "Siren Panel is a plugin for Grafana wich allows you to play a sound when you have alerts.",
+    "version": "1.0.0",
+    "description": "Sound notification for alerts.",
     "author": {
       "name": "Danilo Lima",
       "url": "https://danilo.cc"
     },
+    "keywords": ["notification", "alerts", "sound", "panel"],
     "logos": {
       "small": "img/icn-siren-panel.svg",
       "large": "img/icn-siren-panel.svg"
-    }
+    },
+    "links": [
+      {"name": "GitHub", "url": "https://github.com/danilogit/siren-panel"}
+    ]
+  },
+  "dependencies": {
+    "grafanaVersion": "6.x.x",
+    "plugins": [ ]
   }
 }

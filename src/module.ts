@@ -17,7 +17,6 @@ class SirenPanel extends PanelCtrl {
     alertHistory: [],
     enabled: true,
     stateFilter: ["alerting"],
-    folderId: null,
     mediaUrl: '/public/plugins/' + this.pluginId + '/media/alert.mp3',
     alerting: false
   };
@@ -25,7 +24,7 @@ class SirenPanel extends PanelCtrl {
   /** @ngInject */
   constructor($scope, $injector, private backendSrv) {
     super($scope, $injector);
-    
+
     _.defaults(this.panel, this.panelDefaults);
 
     this.events.on('init-edit-mode', this.onInitEditMode.bind(this));
@@ -51,10 +50,6 @@ class SirenPanel extends PanelCtrl {
   }
 
 
-  pushToHistory(alert) {
-    this.alertHistory.push(alert);
-  }
-
   isAlertInHistory(alert) {
     return this.alertHistory.find(item => {
       if (item.newStateDate === alert.newStateDate && item.state === alert.state && item.panelId === alert.panelId) {
@@ -68,31 +63,29 @@ class SirenPanel extends PanelCtrl {
   fetchAlerts() {
 
     if (this.panel.enabled === false)
-      return;
+      return null;
+
+    if (this.player.ended) {
+      this.panel.alerting = false;
+    }
 
     const params: any = {
       state: this.panel.stateFilter,
       dashboardId: this.dashboard.id
     };
-    
-    this.backendSrv.get('/api/alerts', params).then(res => {
-      this.panel.alerting = false;
-      if (res.length > 0) {
-        res.forEach(alert => {
-          if (!this.isAlertInHistory(alert)) {
-            this.pushToHistory(alert)
-            this.panel.alerting = true;
-            this.player.play();
-          } 
-        });
-      }
 
+    return this.backendSrv.get('/api/alerts', params).then(res => {
+      res.forEach(alert => {
+        if (!this.isAlertInHistory(alert)) {
+          this.alertHistory.push(alert);
+          this.panel.alerting = true;
+          this.player.play();
+        }
+      });
     })
       .then(() => {
         this.renderingCompleted();
       })
-
-    return true;
   }
 
   link(scope, elem, attrs, ctrl) {
